@@ -68,7 +68,10 @@ export class UsersService {
   }
 
   delete(id: number){
-    const remvoedUser = this.users.filter((user) => user.id !== id)
-    return remvoedUser;
+    const findUser = this.findOne(id);
+    if(findUser){
+      this.users = this.users.filter((user) => user.id !== id);
+    }
+    return findUser;
   }
 }
